@@ -18,7 +18,7 @@ model User{
   email String @unique
   bio String
   avatar String
-  password String
+  password String?
   posts Post[]
   comments Comment[]
   likes Like[]

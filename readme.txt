@@ -1,0 +1,2 @@
+-> model creation
+-> seed.ts

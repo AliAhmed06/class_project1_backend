@@ -1,1 +1,1 @@
--> added all the resource folders, i.e post, user, comment, tag, like
+-> just added all the resource folders, i.e post, user, comment, tag, like

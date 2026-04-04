@@ -29,8 +29,9 @@ export class AuthController {
   }
 
   // PROTECTED ROUTE
-  @UseGuards(JwtAuthGuard)
+
   @Get('profile')
+  @UseGuards(JwtAuthGuard)
   getProfile(@Request() req) {
     return req.user;
   }

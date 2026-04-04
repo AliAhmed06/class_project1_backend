@@ -118,6 +118,11 @@ export class AuthService {
     return safeUser;
   }
 
+  async validateJwtUser(userId: number) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    if (!user) throw new UnauthorizedException('User not found');
+  }
+
   async login(user: any) {
     const payload = { sub: user.id, email: user.email };
     return {
@@ -205,7 +210,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: any) {
+  validate(payload: any) {
+    this.authservice.validateJwtUser(payload.sub);
     return { userId: payload.sub, email: payload.email }; // attached to req.user
   }
 }
